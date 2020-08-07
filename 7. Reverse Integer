@@ -57,5 +57,7 @@ Memory Usage: 36.4 MB, less than 86.62% of Java online submissions for Reverse I
 
 
 TIP: We use Long in advance and check it with integer.maxvalue in the end returing it.
+We can int values to long(aka int to long, no conversion needed)
+BUT long to int we do conversion like ---->   (int)num
 
 
