@@ -1,0 +1,45 @@
+Two solutions - hashing and sorting, Both of which can have advantage at different scenerios. Sorting is preffered more if we do not have storage space.
+
+
+
+QUESTION: 217. Contains Duplicate
+Given an array of integers, find if the array contains any duplicates.
+Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct.
+
+CODE: 
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
+        HashSet<Integer> repcheck = new HashSet<>();
+        
+        for(int i=0;i<nums.length;i++){
+            if(repcheck.contains(nums[i])) return true;
+            repcheck.add(nums[i]);
+        }
+        return false;
+    }
+}
+
+
+SOLUTION:
+Success
+Runtime: 5 ms, faster than 82.22% of Java online submissions for Contains Duplicate.
+Memory Usage: 45.9 MB, less than 21.68% of Java online submissions for Contains Duplicate.
+
+
+
+CODE: 
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
+        Arrays.sort(nums);
+        for(int i=0;i<(nums.length)-1;i++){
+            if(nums[i]==nums[i+1]){
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
+SOLUTION:
+Runtime: 3 ms, faster than 99.64% of Java online submissions for Contains Duplicate.
+Memory Usage: 43.3 MB, less than 89.68% of Java online submissions for Contains Duplicate.
