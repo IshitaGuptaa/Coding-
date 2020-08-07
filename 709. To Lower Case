@@ -1,0 +1,49 @@
+QUESTION:709. To Lower Case
+Implement function ToLowerCase() that has a string parameter str, and returns the same string in lowercase.
+
+CODE:
+class Solution {
+    public String toLowerCase(String str) {
+        return str.toLowerCase();
+        
+    }
+}
+QUESTION:709. To Lower Case
+Implement function ToLowerCase() that has a string parameter str, and returns the same string in lowercase.
+
+ 
+SUBMISSION:
+Success
+Runtime: 0 ms, faster than 100.00% of Java online submissions for To Lower Case.
+Memory Usage: 37.4 MB, less than 16.76% of Java online submissions for To Lower Case.
+
+
+
+  ORRRR
+  
+  
+  If in any situation, say we are not allows to use toLowerCase(), then how will we do it.
+  
+  CODE:
+  class Solution {
+    public String toLowerCase(String str) {
+        String s="";
+        for( char c: str.toCharArray()){
+            if(Character.isUpperCase(c)) //for isUpperCase weuse Character.isUpperCase(char)
+            {
+                s=s+(char)(c+32); //adding 32 to the ascii value of c, to make is small ()
+            }   
+            else{
+                s+=c;
+            }
+        }
+        return s;
+        
+    }
+}
+
+
+SUBMISSION: 
+success
+Runtime: 4 ms, faster than 12.56% of Java online submissions for To Lower Case.
+Memory Usage: 37.4 MB, less than 18.50% of Java online submissions for To Lower Case.
