@@ -1,0 +1,43 @@
+QUESTION: 125. Valid Palindrome
+Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
+Note: For the purpose of this problem, we define empty string as valid palindrome.
+
+
+CODE:
+class Solution {
+    public boolean isPalindrome(String s) {
+        s=s.toLowerCase();
+        int left=0;
+        int right=s.length()-1;
+        
+       
+        
+        while(left<right){
+            if(!Character.isLetterOrDigit(s.charAt(left))){
+                left++;   
+                continue;
+            }
+            else if(!Character.isLetterOrDigit(s.charAt(right))){
+                right--;
+                continue;
+            }
+            
+            
+            if(s.charAt(left)!=s.charAt(right)){
+                return false;
+            }
+            
+            left++;
+            right--;
+            
+            
+            
+        }
+        return true;
+    }
+}
+
+SUBMISSION:
+Runtime: 3 ms, faster than 74.72% of Java online submissions for Valid Palindrome.
+Memory Usage: 39.5 MB, less than 87.06% of Java online submissions for Valid Palindrome.
+Next challenges:
