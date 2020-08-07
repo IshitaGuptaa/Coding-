@@ -1,0 +1,61 @@
+QUESTION:7. Reverse Integer
+Given a 32-bit signed integer, reverse digits of an integer.
+
+CODE:
+class Solution {
+    public int reverse(int x) {
+        int rev=0;
+        while(x!=0){
+            int temp=x%10;
+            x/=10;
+            if((rev>Integer.MAX_VALUE/10 ||rev==Integer.MAX_VALUE/10 && temp>7)) return 0;               if((rev<Integer.MIN_VALUE/10 || rev==Integer.MIN_VALUE/10 && temp<-8)) return 0;
+            rev=rev*10+temp;
+        }
+        System.out.println(rev);
+        return rev;
+    }
+}
+
+
+SUBMISSION: 
+Success 
+Runtime: 4 ms, faster than 15.24% of Java online submissions for Reverse Integer.
+Memory Usage: 36.7 MB, less than 52.57% of Java online submissions for Reverse Integer.
+
+
+TIP: Int will not be able to store the value so, before making rev greater then Integr.MAX_VALUE or less than MIN_VALUE, we check it by dividing it by 10 and checking it's last number as greater than 7 or less than -8
+
+
+
+
+
+ORRRR
+
+(BETTER OPTION)
+
+
+CODE:
+class Solution {
+    public int reverse(int x) {
+        long ans = 0;
+        while(x != 0) {
+            ans = ans * 10 + (x % 10);
+            x /= 10;
+        }
+        if((ans >= Integer.MAX_VALUE) || (ans <= Integer.MIN_VALUE)) {
+            return 0;
+        } else {
+            return (int) ans;
+        }
+    }
+}
+
+SUBMISSION:
+Success
+Runtime: 1 ms, faster than 100.00% of Java online submissions for Reverse Integer.
+Memory Usage: 36.4 MB, less than 86.62% of Java online submissions for Reverse Integer.
+
+
+TIP: We use Long in advance and check it with integer.maxvalue in the end returing it.
+
+
