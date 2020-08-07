@@ -1,0 +1,40 @@
+QUESTION:   9. Palindrome Number
+Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward.
+
+  CODE:
+  class Solution {
+    public boolean isPalindrome(int x) {
+        
+        if(x==0){
+            return true;
+        }
+        
+        if(x<0 || x%10==0){
+            return false;
+        }
+        
+        int reversed_int=0;
+        while(x>reversed_int){
+            int temp=x%10;
+            x/=10;
+            reversed_int = reversed_int*10+temp;
+        }
+        
+        if(reversed_int==x || reversed_int/10==x){
+            return true;
+        }
+        
+        else{
+            return false;}
+        
+        
+    }
+}
+
+
+SUBMISSION:
+Success
+Runtime: 6 ms, faster than 100.00% of Java online submissions for Palindrome Number.
+Memory Usage: 38.6 MB, less than 72.72% of Java online submissions for Palindrome Number.
+
+TIP: there is no point in reversing the entire number when we can reverse half of it and see if both are equal.
