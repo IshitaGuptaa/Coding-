@@ -39,3 +39,8 @@ public class Solution extends VersionControl {
 
 
 SUBMISSION:
+
+Success
+Runtime: 12 ms, faster than 99.38% of Java online submissions for First Bad Version.
+Memory Usage: 36.3 MB, less than 22.31% of Java online submissions for First Bad Version.
+
