@@ -1,1 +1,46 @@
+QUESTION: 34. Find First and Last Position of Element in Sorted Array
+Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
+Your algorithm's runtime complexity must be in the order of O(log n).
+If the target is not found in the array, return [-1, -1].
 
+
+CODE:
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+       
+        
+        int[] A = new int[]{-1,-1};
+        boolean flag=false;
+        boolean flag1=false;
+         int left=0;
+        int right=nums.length-1;
+        while(left<=right){
+            if(nums[left]==target){
+                flag=true;
+            }            
+             if(nums[right]==target){  
+                flag1=true;
+            }         
+            if(flag==false){
+            left++;
+            }
+            if(flag1==false){
+            right--;
+                
+            }
+            if((flag==true &&flag1==true)){
+                A[0]=left;
+                A[1]=right;
+                break;
+            }
+        }
+        
+        return A;
+    }
+}
+
+
+SUBMISSION:
+Success
+Runtime: 1 ms, faster than 22.41% of Java online submissions for Find First and Last Position of Element in Sorted Array.
+Memory Usage: 42.4 MB, less than 94.34% of Java online submissions for Find First and Last Position of Element in Sorted Array.
