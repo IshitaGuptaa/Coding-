@@ -1,0 +1,9 @@
+QUESTION: 1119 Remove Vowel from String
+CODE:
+
+only one line - 
+
+S.replaceAll("[aeiou]","");
+
+SUBMISSION:
+Success
