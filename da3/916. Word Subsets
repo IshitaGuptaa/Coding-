@@ -1,0 +1,66 @@
+QUESTION: 916. Word Subsets
+We are given two arrays A and B of words.  Each word is a string of lowercase letters.
+Now, say that word b is a subset of word a if every letter in b occurs in a, including multiplicity.  For example, "wrr" is a subset of "warrior", but is not a subset of "world".
+Now say a word a from A is universal if for every b in B, b is a subset of a. 
+Return a list of all universal words in A.  You can return the words in any order.
+
+
+
+CODE:
+class Solution {
+    public List<String> wordSubsets(String[] A, String[] B) {
+       
+         int[] max_b = new int[26];  
+        int blen=B.length;
+        for(int i=0;i<blen;i++){
+            int[] freq_count_b = count_freq(B[i]);
+            for(int j=0;j<26;j++){
+                if(freq_count_b[j]>0){
+            max_b[j]=Math.max(freq_count_b[j],max_b[j]);
+            
+            }
+            }
+        }
+        
+        List<String> finals = new ArrayList<String>();      
+        int alen=A.length;
+        for(int i=0;i<alen;i++){
+            String S = A[i];
+            int[] freq_count_a=count_freq(S);
+            Boolean flag=true;
+            for(int j=0;j<26;j++){
+                if(max_b[j]>0){
+                    if(freq_count_a[j]<max_b[j]){
+                       
+                        flag=false;
+                    }
+                }
+            }
+           
+            if(flag==true){
+                finals.add(S);
+            }
+            
+        }
+        return finals;
+    }
+        
+        
+        public int[] count_freq(String S1){
+            int[] A = new int[26];
+            for(char c: S1.toCharArray()){
+                A[c-'a']++;
+               
+            }
+            
+            return A;
+        }
+        
+        
+    }
+
+
+SUBMISSION:
+Success
+Runtime: 19 ms, faster than 68.41% of Java online submissions for Word Subsets.
+Memory Usage: 47.6 MB, less than 80.64% of Java online submissions for Word Subsets.
