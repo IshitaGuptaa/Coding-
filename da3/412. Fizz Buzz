@@ -1,0 +1,36 @@
+QUESTION: 412. Fizz Buzz
+Write a program that outputs the string representation of numbers from 1 to n.
+But for multiples of three it should output “Fizz” instead of the number and for the multiples of five output “Buzz”. For numbers which are multiples of both three and five output “FizzBuzz”.
+
+CODE:
+class Solution {
+    public List<String> fizzBuzz(int n) {
+        List<String> ans = new ArrayList<>();
+        for(int i=1;i<n+1;i++){
+           
+            if(i%3==0 && i%5!=0){
+                ans.add("Fizz");
+            }
+            
+            else if(i%5==0 && i%3!=0){
+               ans.add("Buzz");
+            }
+            
+            else if(!(i%3==0 || i%5==0)){
+                ans.add(Integer.toString(i));
+            }
+            
+            else{
+                ans.add("FizzBuzz");
+            }
+            
+            
+        }
+     return ans;   
+    }
+}
+
+SUBMISSION:
+Success
+Runtime: 1 ms, faster than 99.56% of Java online submissions for Fizz Buzz.
+Memory Usage: 40.6 MB, less than 78.59% of Java online submissions for Fizz Buzz.
