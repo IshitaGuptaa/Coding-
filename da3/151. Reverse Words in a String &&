@@ -1,0 +1,32 @@
+QUESTION: 151. Reverse Words in a String
+Given an input string, reverse the string word by word.
+
+
+CODE:
+class Solution {
+    public String reverseWords(String s) {
+        s=s.trim().replaceAll(" +"," ");
+        String[] S = s.split(" ");
+        int left=0;
+        int right=S.length-1;
+        while(left<(S.length/2)){
+            String temp=S[left];
+            S[left]=S[right];
+            S[right]=temp;
+            
+            left++;
+            right--;
+        }
+             s=""; 
+        for(int i=0;i<S.length;i++){
+            s=s+S[i]+" ";
+        }
+        
+        return s.trim();
+    }
+}
+
+SUBMISSION:
+Success
+Runtime: 10 ms, faster than 35.79% of Java online submissions for Reverse Words in a String.
+Memory Usage: 41 MB, less than 50.83% of Java online submissions for Reverse Words in a String.
