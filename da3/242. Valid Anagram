@@ -1,0 +1,33 @@
+DISCUSSION:242. Valid Anagram
+Given two strings s and t , write a function to determine if t is an anagram of s.
+
+CODE:
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        if(s.length()!=t.length()) return false;
+        int char_array_a[]= new int[26];
+             
+        for(int i=0;i<s.length();i++){
+            char_array_a[s.charAt(i)-'a']++;
+            char_array_a[t.charAt(i)-'a']--;
+            }
+            
+        for(int i=0;i<26;i++){
+            if(char_array_a[i]!=0){
+                return false;
+            }
+        }
+        
+        
+        
+        return true;
+    }
+}
+
+
+TIP: rather than creating two diff array, we use same and use addition, substaction to that single array to find the appropriate answer
+
+SUBMISSION:
+Success
+Runtime: 3 ms, faster than 83.57% of Java online submissions for Valid Anagram.
+Memory Usage: 39.1 MB, less than 98.56% of Java online submissions for Valid Anagram.
