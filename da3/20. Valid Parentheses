@@ -1,0 +1,51 @@
+QUESTION: 20. Valid Parentheses
+Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+An input string is valid if:
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+Note that an empty string is also considered valid.
+
+
+
+CODE:
+
+class Solution {
+    public boolean isValid(String s) {
+        
+        Stack<Character> A = new Stack<>();
+        
+        if(s.length()%2!=0) return false;
+        
+        for(char c: s.toCharArray()){
+            if(c=='{' || c=='[' || c=='('){
+                A.push(c);
+            }
+            
+            else{
+                if(c=='}' && !A.empty() && A.peek()=='{'){
+                    A.pop();
+                }
+                else if(c==')' && !A.empty() && A.peek()=='('){
+                    A.pop();
+                }
+                else if(c==']' && !A.empty() && A.peek()=='['){
+                    A.pop();
+                }
+            }
+        }
+        
+        if(A.empty()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+}
+
+
+
+SUBMISSION:
+Success
+Runtime: 1 ms, faster than 99.18% of Java online submissions for Valid Parentheses.
+Memory Usage: 37.5 MB, less than 70.80% of Java online submissions for Valid Parentheses.
