@@ -1,0 +1,38 @@
+QUESTION: 414. Third Maximum Number
+Given a non-empty array of integers, return the third maximum number in this array. If it does not exist, return the maximum number. The time complexity must be in O(n).
+
+
+CODE:
+class Solution {
+    public int thirdMax(int[] nums) {
+        HashSet<Integer> A = new HashSet();
+        for(int i=0;i<nums.length;i++){
+            A.add(nums[i]);
+        }
+        
+        if(A.size()<3){
+            return Collections.max(A);
+        }
+         A.remove(Collections.max(A));
+         A.remove(Collections.max(A));
+         return Collections.max(A);
+    }
+}
+
+
+SUBMISSION:
+Success
+Runtime: 4 ms, faster than 48.83% of Java online submissions for Third Maximum Number.
+Memory Usage: 38.9 MB, less than 94.21% of Java online submissions for Third Maximum Number.
+
+
+
+
+-----------------********OORRRRR***********---------------
+
+Creating a hashset , kind of slows things down, coz we have to set values to it and then evaluate. We can use the following step/Trick which makes our code runs faster.
+We could have done the question by using int and Integer wrapper classes by initialising int as -1 but since negative numbers are also allowd in the question. SO it is better to use Integer wrapper classes.
+
+CODE:
+
+SUBMISSION:
