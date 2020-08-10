@@ -1,0 +1,44 @@
+QUESTION:290. Word Pattern
+Given a pattern and a string str, find if str follows the same pattern.
+Here follow means a full match, such that there is a bijection between a letter in pattern and a non-empty word in str.
+
+CODE:
+
+class Solution {
+    public boolean wordPattern(String pattern, String str1) {
+        
+        
+        String[] str=str1.split(" ");
+        if(pattern.length()!=str.length) return false;
+        HashMap<Character,String> Map = new HashMap<>();
+        
+        for(int i=0;i<pattern.length();i++){
+            char c=pattern.charAt(i);
+            if(Map.containsKey(c)){
+                if(!Map.containsValue(str[i])){
+                    return false;
+                }
+                else{                    
+                    if( !Map.get(Character.valueOf(c)).equals(str[i])){
+                        return false;
+                    }
+                }
+            }
+            else{
+                if(Map.containsValue(str[i])){
+                    return false;
+                }
+                else{
+                    Map.put(c,str[i]);
+                }
+            }
+        }
+        return true;
+    }
+}
+
+
+SUBMISSION:
+Success
+Runtime: 0 ms, faster than 100.00% of Java online submissions for Word Pattern.
+Memory Usage: 37.5 MB, less than 64.82% of Java online submissions for Word Pattern.
