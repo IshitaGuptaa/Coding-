@@ -1,0 +1,55 @@
+QUESTION: 74. Search a 2D Matrix
+Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:
+- Integers in each row are sorted from left to right.
+- The first integer of each row is greater than the last integer of the previous row.
+
+
+
+CODE:
+
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        
+        if(matrix.length==0 || matrix[0].length==0) return false;
+        
+        
+        int left=0;
+        int right=(matrix.length*matrix[0].length) -1;
+         
+
+         
+        while(left<=right){
+                  
+            
+            int mid=left+(right-left)/2;
+            
+            
+             
+            
+            int midval = matrix[mid/matrix[0].length][mid%matrix[0].length];
+       
+            if(midval<target){
+                left=mid+1;
+                 
+            }
+        
+            if(midval>target){
+                right=mid-1;
+                
+            }
+            
+            if(midval==target){
+                return true;
+            }
+            
+        }
+        
+        
+        return false;
+    }
+}
+
+SUBMISSION:
+success
+Runtime: 0 ms, faster than 100.00% of Java online submissions for Search a 2D Matrix.
+Memory Usage: 39.3 MB, less than 74.42% of Java online submissions for Search a 2D Matrix.
