@@ -6,6 +6,7 @@ After you are done modifying the input array in-place, return the new length of 
 Could you solve it using only O(1) extra space?
 
 CODE:
+//For extra O(1) time complexity, we have used string builder which has made this question easier;
 
 class Solution {
     public int compress(char[] chars) {
