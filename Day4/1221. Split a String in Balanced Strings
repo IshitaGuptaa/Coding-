@@ -43,6 +43,8 @@ THE ABOVE SOLUTIONS IS NOT SO OPTIMAL AS WE ARE TRYING TO FIND OUT EVERY POSSIBL
 better solution
 // One of the observation we have is, all the letters are utilised in balanced string, we do not have any character or letter that we skip.
 or why loop twice, loop everything once.
+ //HOW TO TELL THAT WE ARE NOT SKIPPING ANY LETTER. CLUE IN THE QUESTION IS THE INPUT STRING ITSLEF IS BALANCED. otherwise , above solution would have been better.
+
 
 CODE:
 class Solution {
