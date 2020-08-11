@@ -1,0 +1,100 @@
+QUESTION: 1222. Queens That Can Attack the King
+On an 8x8 chessboard, there can be multiple Black Queens and one White King.
+Given an array of integer coordinates queens that represents the positions of the Black Queens, and a pair of coordinates king that represent the position of the White King, return the coordinates of all the queens (in any order) that can attack the King.
+
+
+CODE:
+class Solution {
+    public List<List<Integer>> queensAttacktheKing(int[][] queens, int[] king) {
+        List<List<Integer>> res = new ArrayList();
+        
+        int x=king[0];
+        int y=king[1];
+        
+        
+        res=dir(x,y,queens,res,"up");
+         res=dir(x,y,queens,res,"right");
+         res=dir(x,y,queens,res,"left");
+         res=dir(x,y,queens,res,"down");
+         res=dir(x,y,queens,res,"upright");
+         res=dir(x,y,queens,res,"upleft");
+         res=dir(x,y,queens,res,"downright");
+         res=dir(x,y,queens,res,"downleft");
+             
+        
+     return res;
+    
+}
+    
+    List<List<Integer>> dir(int x,int y,int[][] queens, List<List<Integer>> res,String S){
+        if(S.equals("up")){
+            x=x-1;}
+        else if(S.equals("down")){
+            x=x+1;
+        }
+        else if(S.equals("left")){
+             y=y-1;            
+        }
+         else if(S.equals("right")){
+             y=y+1;            
+        }
+        
+        else if(S.equals("upright")){
+             y=y+1; 
+            x=x-1;
+        }
+        else if(S.equals("upleft")){
+             y=y-1;   
+             x=x-1;
+        }
+        else if(S.equals("downright")){
+            y=y+1;
+             x=x+1;
+        }
+        else if(S.equals("downleft")){
+            y=y-1;
+             x=x+1;
+        }
+        
+        if(boundarycheck(x,y)){
+            if(match(x,y,queens)){
+                ArrayList<Integer> inner = new ArrayList<Integer>();
+                    inner.add(x);
+                    inner.add(y);
+            res.add(inner);
+            return res;
+        }
+        else{
+             dir(x,y,queens,res,S);
+        }}
+    return res;}
+    
+        boolean boundarycheck(int x,int y){
+            if(x<0||y<0||x>=8||y>=8){
+                return false;
+            }
+            else{
+                return true;
+            }
+        }
+        
+        
+    boolean match(int x,int y,int[][] queens){
+        for(int i=0;i<queens.length;i++){
+            if(queens[i][0]==x){
+               if(queens[i][1]==y){
+                   return true;
+               } 
+            }
+        }
+        return false;
+    }
+    
+   
+}
+
+
+SUBMISSION: 
+Success
+Runtime: 0 ms, faster than 100.00% of Java online submissions for Queens That Can Attack the King.
+Memory Usage: 39.5 MB, less than 78.06% of Java online submissions for Queens That Can Attack the King.
