@@ -1,0 +1,22 @@
+QUESTION:  122. Best Time to Buy and Sell Stock II
+Say you have an array prices for which the ith element is the price of a given stock on day i.
+Design an algorithm to find the maximum profit. You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times).
+Note: You may not engage in multiple transactions at the same time (i.e., you must sell the stock before you buy again).
+
+CODE:
+class Solution {
+    public int maxProfit(int[] prices) {
+        int sum=0;
+        for(int i=0;i<prices.length-1;i++){
+            if(prices[i+1]>prices[i]){
+                sum=sum+(prices[i+1]-prices[i]);
+            }
+        }
+        return sum;
+    }
+}
+
+SUBMISSION:
+Success
+Runtime: 1 ms, faster than 94.53% of Java online submissions for Best Time to Buy and Sell Stock II.
+Memory Usage: 39.2 MB, less than 91.95% of Java online submissions for Best Time to Buy and Sell Stock II.
