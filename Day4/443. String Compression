@@ -1,0 +1,62 @@
+443. String Compression
+Given an array of characters, compress it in-place.
+The length after compression must always be smaller than or equal to the original array.
+Every element of the array should be a character (not int) of length 1.
+After you are done modifying the input array in-place, return the new length of the array.
+Could you solve it using only O(1) extra space?
+
+CODE:
+
+class Solution {
+    public int compress(char[] chars) {
+        int count=0;
+        int pointer=0;
+        char old=chars[0];
+        
+        StringBuilder sb = new StringBuilder();
+        sb.append(chars);
+        sb.append(" ");
+        
+        for(char c: sb.toString().toCharArray()){
+           if(c==old){
+                count++;
+            }
+            
+            else{
+                
+                if(count==1){
+                    chars[pointer]=old;
+                    pointer++;
+                     }
+                
+                else if(count>1){
+                    chars[pointer]=old;
+                    pointer++;
+                    int n=Integer.toString(count).length();
+                    int count1=count;
+                    while(count>0){
+                        chars[pointer+n-1]=(char)(count%10+'0');
+                       count=count/10;
+                         n--;
+                    }
+                    
+                    pointer=pointer+ Integer.toString(count1).length();
+                   
+                }
+                
+                
+                old=c;
+                count=1;
+                  }
+            
+            
+        }
+        return pointer;
+    }
+}
+
+SUBMISSION:
+
+Success
+Runtime: 1 ms, faster than 96.60% of Java online submissions for String Compression.
+Memory Usage: 38.9 MB, less than 91.36% of Java online submissions for String Compression.
