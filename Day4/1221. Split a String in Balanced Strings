@@ -1,0 +1,72 @@
+QUESTION: 1221. Split a String in Balanced Strings
+Balanced strings are those who have equal quantity of 'L' and 'R' characters.
+Given a balanced string s split it in the maximum amount of balanced strings.
+Return the maximum amount of splitted balanced strings.
+
+
+CODE:
+class Solution {
+    public int balancedStringSplit(String s) {
+        int res=0;
+        for(int i=0;i<s.length()-1;i++){
+            for(int j=i+1;j<s.length();j++){
+                String sub = s.substring(i,j+1);
+                int count_r=0;
+                int count_l=0;
+                for(char c:sub.toCharArray()){
+                    if(c=='R') count_r++;
+                    else count_l++;
+                }
+                
+                if(count_r==count_l){
+                    res++;
+                    i=j+1;
+                }
+                }
+        }
+        return res;
+    }
+}
+
+
+SUBMISSION:
+Success
+Runtime: 8 ms, faster than 6.84% of Java online submissions for Split a String in Balanced Strings.
+Memory Usage: 39.4 MB, less than 5.06% of Java online submissions for Split a String in Balanced Strings.
+
+
+
+----- OR-----
+
+THE ABOVE SOLUTIONS IS NOT SO OPTIMAL AS WE ARE TRYING TO FIND OUT EVERY POSSIBLE SUBSTRING, THAT SLOWS THINGS DOWN.
+
+better solution
+// One of the observation we have is, all the letters are utilised in balanced string, we do not have any character or letter that we skip.
+or why loop twice, loop everything once.
+
+CODE:
+class Solution {
+    public int balancedStringSplit(String s) {
+        int res=0;
+        int count_r=0;
+        int count_l=0;
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)=='R'){
+                count_r++;
+            }
+            else if(s.charAt(i)=='L'){
+                count_l++;
+            }
+            
+            if(count_r==count_l){
+                res++;
+            }
+        }
+        return res;
+    }
+}
+
+SUBMISSION:
+Success
+Runtime: 0 ms, faster than 100.00% of Java online submissions for Split a String in Balanced Strings.
+Memory Usage: 37.2 MB, less than 74.72% of Java online submissions for Split a String in Balanced Strings.
