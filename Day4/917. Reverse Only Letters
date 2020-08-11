@@ -1,0 +1,79 @@
+QUESTION: 917. Reverse Only Letters
+Given a string S, return the "reversed" string where all characters that are not a letter stay in the same place, and all letters reverse their positions.
+
+ 
+CODE:
+
+class Solution {
+    public String reverseOnlyLetters(String S1) {
+        int left=0;
+        int right=S1.length()-1;
+        StringBuilder S = new StringBuilder(right+1);
+        S.append(S1);
+        while(left<=right){
+            if(!Character.isLetter(S.charAt(left))){
+                left++;
+                continue;
+            }
+            else if (!Character.isLetter(S.charAt(right))){
+                right--;
+                continue;
+            }
+            
+            char temp=S.charAt(right);
+            S.replace(right,right+1,Character.toString(S.charAt(left)));
+            S.replace(left,left+1,Character.toString(temp));
+            left++;
+            right--;
+            
+        }
+        return S.toString();
+    }
+}
+
+SUBMISSION:
+Success
+Runtime: 1 ms, faster than 64.85% of Java online submissions for Reverse Only Letters.
+Memory Usage: 38.1 MB, less than 46.72% of Java online submissions for Reverse Only Letters.
+
+// It is always better to avoid using String builder when we can use the char Array. 
+
+
+-----OR------
+better solution-
+
+CODE:
+
+class Solution {
+    public String reverseOnlyLetters(String S) {
+        char[] c = S.toCharArray();
+        int left=0;
+        int right=S.length()-1;
+        
+        while(left<right){
+           if(!Character.isLetter(c[left])){
+                left++;
+                continue;
+            }
+            if(!Character.isLetter(c[right])) {
+                right--;
+                continue;
+            }
+            
+            char tmp=c[right];
+            c[right]=c[left];
+            c[left]=tmp;
+            left++;
+            right--;
+        }
+        return String.valueOf(c);
+    }
+    
+}
+
+SUBMISSION:
+Success
+Runtime: 0 ms, faster than 100.00% of Java online submissions for Reverse Only Letters.
+Memory Usage: 37.8 MB, less than 64.33% of Java online submissions for Reverse Only Letters.
+
+
