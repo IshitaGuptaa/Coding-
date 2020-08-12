@@ -1,0 +1,28 @@
+QUESTION: 1446. Consecutive Characters
+Given a string s, the power of the string is the maximum length of a non-empty substring that contains only one unique character.
+Return the power of the string.
+
+CODE:
+
+class Solution {
+    public int maxPower(String s) {
+        int max=0;
+        int count=1;
+        int len=s.length();
+        for(int i=0;i<len;i++){
+            if(i+1!=len && s.charAt(i+1)==s.charAt(i)){
+                count++;
+            }
+            else{
+                max=Math.max(max,count);
+                count=1; 
+            }
+        }
+        return max;
+    }
+}
+
+SUBMISSION:
+Success
+Runtime: 1 ms, faster than 100.00% of Java online submissions for Consecutive Characters.
+Memory Usage: 37.9 MB, less than 87.81% of Java online submissions for Consecutive Characters.
