@@ -1,0 +1,52 @@
+QUESTION: 14. Longest Common Prefix
+Write a function to find the longest common prefix string amongst an array of strings.
+
+If there is no common prefix, return an empty string "".
+
+Example 1:
+
+Input: ["flower","flow","flight"]
+Output: "fl"
+Example 2:
+
+Input: ["dog","racecar","car"]
+Output: ""
+Explanation: There is no common prefix among the input strings.
+
+
+
+CODE:
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        if(strs.length==1) return strs[0];
+        if(strs.length==0) return "";
+        int pointer=0;
+        int min=Integer.MAX_VALUE;
+        int len=strs.length;
+        
+        for(int i=0;i<len;i++){
+            min=Math.min(strs[i].length(),min);
+        }
+        while(pointer<min){
+            
+        for(int i=0;i<len;i++){
+             
+            if(i+1!=len && strs[i].charAt(pointer)!=strs[i+1].charAt(pointer) ){   
+            return strs[0].substring(0,pointer);
+            } 
+        }
+            pointer++;
+       }
+        
+        return strs[0].substring(0,pointer);
+        
+    }
+}
+
+
+
+
+SUBMISSION:
+Success
+Runtime: 0 ms, faster than 100.00% of Java online submissions for Longest Common Prefix.
+Memory Usage: 37.1 MB, less than 99.18% of Java online submissions for Longest Common Prefix.
