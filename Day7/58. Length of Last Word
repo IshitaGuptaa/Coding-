@@ -1,0 +1,53 @@
+QUESTION: 58. Length of Last Word
+Given a string s consists of upper/lower-case alphabets and empty space characters ' ', return the length of last word (last word means the last appearing word if we loop from left to right) in the string.
+
+If the last word does not exist, return 0.
+
+Note: A word is defined as a maximal substring consisting of non-space characters only.
+
+Example:
+
+Input: "Hello World"
+Output: 5
+
+
+
+
+CODE:
+
+class Solution {
+    public int lengthOfLastWord(String s1) {
+        if(s1.length()==0 || s1.matches(" *")) return 0;
+        String[] s = s1.split(" ");
+        return s[s.length-1].length();
+    }
+}
+
+SUBMISSION:
+Success
+Runtime: 2 ms, faster than 16.80% of Java online submissions for Length of Last Word.
+Memory Usage: 38.2 MB, less than 39.68% of Java online submissions for Length of Last Word.
+
+
+// NOT OPTIMISED ENOUGH MOSTLY BECAUSE OF REGEX PART.
+
+----BETTER ALTERNATE----
+
+
+CODE:
+class Solution {
+    public int lengthOfLastWord(String s1) {
+        if(s1.length()==0 ) return 0;
+        String[] s = s1.split(" ");
+        if(s.length>0){
+        return s[s.length-1].length();}
+        else return 0;
+    }
+}
+
+//removing regex
+
+SUBMISSION:
+Success
+Runtime: 0 ms, faster than 100.00% of Java online submissions for Length of Last Word.
+Memory Usage: 37.8 MB, less than 55.20% of Java online submissions for Length of Last Word.
