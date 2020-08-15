@@ -54,3 +54,44 @@ SUBMISSION:
 Success
 Runtime: 1 ms, faster than 100.00% of Java online submissions for Ugly Number.
 Memory Usage: 36.5 MB, less than 90.35% of Java online submissions for Ugly Number.
+
+
+
+---ORRR---
+
+CODE:
+
+class Solution {
+    public boolean isUgly(int num) {
+       
+        if(num<1) return false;
+        while(num>1){
+            
+            if(num%2==0){
+                num/=2;
+            }
+            
+           if(num%5==0){
+                num/=5;
+            }
+            
+            if(num%3==0){
+                num/=3;
+            }
+            
+            if(num==1) return true;
+            
+            if(num%2!=0 && num%5!=0 && num%3!=0) {
+                return false;
+            }
+        }
+        return true;
+        
+    }
+}
+
+
+SUBMISSION:
+Success
+Runtime: 1 ms, faster than 100.00% of Java online submissions for Ugly Number.
+Memory Usage: 36.4 MB, less than 93.06% of Java online submissions for Ugly Number.
