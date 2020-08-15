@@ -1,0 +1,79 @@
+QUESTION: 41. First Missing Positive
+
+Given an unsorted integer array, find the smallest missing positive integer.
+
+Example 1:
+
+Input: [1,2,0]
+Output: 3
+Example 2:
+
+Input: [3,4,-1,1]
+Output: 2
+Example 3:
+
+Input: [7,8,9,11,12]
+Output: 1
+Follow up:
+
+Your algorithm should run in O(n) time and uses constant extra space.
+
+
+CODE:
+
+class Solution {
+    public int firstMissingPositive(int[] nums) {
+        
+        int n=nums.length;
+        if(n==0) return 1;
+         boolean count[] = new boolean[n];
+        int i;
+        for(i=0;i<n;i++){
+            if(nums[i]>0 && nums[i]<n+1){
+                count[nums[i]-1]=true;
+            }
+        }
+    
+        for(i=0;i<n;i++){
+            if(!count[i]) return i+1;
+        }
+    return (n+1);
+    }
+}
+
+SUBMISSION:
+
+Success
+Runtime: 0 ms, faster than 100.00% of Java online submissions for First Missing Positive.
+Memory Usage: 37.2 MB, less than 89.80% of Java online submissions for First Missing Positive.
+
+
+
+---ORR---
+
+//ABOVE SOLUTION IS MORE OPTIMAL, Sorting consumes up most of the time
+
+CODE:
+class Solution {
+    public int firstMissingPositive(int[] nums) {
+        
+        int n=nums.length;
+         boolean count[] = new boolean[n];
+        for(int i=0;i<n;i++){
+            if(nums[i]>0 && nums[i]<n+1){
+                count[nums[i]-1]=true;
+            }
+        }
+    
+        for(int i=0;i<count.length;i++){
+            if(!count[i]) return i+1;
+        }
+    return (n+1);
+    }
+}
+
+SUBMISSION
+
+Success
+Runtime: 1 ms, faster than 58.48% of Java online submissions for First Missing Positive.
+Memory Usage: 39.1 MB, less than 26.99% of Java online submissions for First Missing Positive.
