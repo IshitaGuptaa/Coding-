@@ -1,0 +1,95 @@
+QUESTION: 1162. As Far from Land as Possible
+
+Given an N x N grid containing only values 0 and 1, where 0 represents water and 1 represents land, find a water cell such that its distance to the nearest land cell is maximized and return the distance.
+
+The distance used in this problem is the Manhattan distance: the distance between two cells (x0, y0) and (x1, y1) is |x0 - x1| + |y0 - y1|.
+
+If no land or water exists in the grid, return -1.
+
+ 
+
+Example 1:
+
+
+
+Input: [[1,0,1],[0,0,0],[1,0,1]]
+Output: 2
+Explanation: 
+The cell (1, 1) is as far as possible from all the land with distance 2.
+Example 2:
+
+
+
+Input: [[1,0,0],[0,0,0],[0,0,0]]
+Output: 4
+Explanation: 
+The cell (2, 2) is as far as possible from all the land with distance 4.
+
+
+
+
+CODE:  
+
+class Solution {
+    public int maxDistance(int[][] grid) {
+        int max=0;
+        int n=grid.length;   
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                if(grid[i][j]==0){
+                    boolean bool[][] = new boolean[n][n];
+                    //System.out.println("min: "+min);
+                    int min=Integer.MAX_VALUE;
+                    min=(function(min,grid,bool,i,j,i,j));
+                    max=Math.max(max,min);
+                }
+                //System.out.println("max: "+max);
+            }
+        }
+        return (max!=Integer.MAX_VALUE && max !=0)?max:-1 ;
+    }
+    
+    
+    public int function(int min,int[][] grid,boolean[][] bool,int x, int y, int a,int b){
+        
+        if(x>=0 && y>=0 && x<grid.length && y<grid.length && !bool[x][y]){
+            
+            bool[x][y]=true;
+            if(grid[x][y]==1){
+                
+            return Math.min(min,(Math.abs(a-x)+Math.abs(b-y)));}
+            
+            min=function(min,grid,bool,x,y-1,a,b);//left
+            min=function(min,grid,bool,x,y+1,a,b);//right
+            min=function(min,grid,bool,x-1,y,a,b);
+            min=function(min,grid,bool,x+1,y,a,b);
+            min=function(min,grid,bool,x-1,y-1,a,b);
+            min=function(min,grid,bool,x-1,y+1,a,b);
+            min=function(min,grid,bool,x+1,y+1,a,b);
+            min=function(min,grid,bool,x+1,y-1,a,b);
+            
+        }
+        
+        
+        
+        return min;
+    }
+}
+
+
+
+SUBMISSION:
+
+Time Limit Exceeded
+
+
+
+NOTE - THE ABOVE SOLUTION WORKS FINE WHEN YOU RUN, BUT THE PROBLEM LIES IN THE TIME LIMIT. NOW SINCE WHAT WE HAVE ISED IS THE COMBINATION OF BFS AND DFS, AND CHECKS EVEN FOR  ALREADY VISITED VALUE ONLY TO RETURN THE PREVIOUS MIN VALUE. SO WE MAKE USE OF GRAPH DATE A STRUCTURE IT WILL MAKE OUR CODE VERY OPTIMAL
+
+
+---ORRR---
+
+
+CODE: 
+
+SUBMISSION:
