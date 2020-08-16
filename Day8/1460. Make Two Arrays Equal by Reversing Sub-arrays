@@ -70,3 +70,38 @@ SUBMISSION:
 Success
 Runtime: 2 ms, faster than 86.00% of Java online submissions for Make Two Arrays Equal by Reversing Sub-arrays.
 Memory Usage: 39.2 MB, less than 84.25% of Java online submissions for Make Two Arrays Equal by Reversing Sub-arrays.
+
+
+-----ORR-----
+
+BETTER SOLUTION
+
+CODE:
+class Solution {
+    public boolean canBeEqual(int[] target, int[] arr) {
+        
+        if(target.length!=arr.length) return false;
+        
+        int[] count=new int[1000];
+        
+        for(int i:target){
+            count[i-1]++;
+        }
+        
+        for(int i=0;i<arr.length;i++){
+            if(count[arr[i]-1]==0){
+                 return false;
+            }
+            else{
+                count[arr[i]-1]--;
+            }
+        }
+        return true;
+        
+    }
+}
+
+SUBMISSION:
+Success
+Runtime: 1 ms, faster than 100.00% of Java online submissions for Make Two Arrays Equal by Reversing Sub-arrays.
+Memory Usage: 39.7 MB, less than 45.50% of Java online submissions for Make Two Arrays Equal by Reversing Sub-arrays.
