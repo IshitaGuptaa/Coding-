@@ -44,15 +44,21 @@ class Solution {
         int sum=0;
         int len=0;
         int n=s.length();
+        
+        //Rather than using charAt multiple times, it is better to use char Array
+        
+        char[] first = s.toCharArray(); 
+        char[] second = t.toCharArray();
+        
         for(int right=0;right<n;right++){
             
-            sum+=Math.abs((s.charAt(right)-'a')-(t.charAt(right)-'a'));
+            sum+=Math.abs( first[right]-second[right]);
             
             if(sum<=maxCost){
                 len=Math.max(right-left+1,len);
             }
             else{
-                sum-=Math.abs((s.charAt(left)-'a')-(t.charAt(left)-'a'));
+                sum-=Math.abs( first[left]-second[left]);
                  left++;
             }
             
@@ -60,7 +66,6 @@ class Solution {
         return len;
     }
 }
-
 
 
 SUBMISSION:
