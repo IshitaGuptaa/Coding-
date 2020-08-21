@@ -1,0 +1,83 @@
+CODE:
+
+import java.util.*;
+import java.io.*;
+
+class Graph{
+	int V;
+	LinkedList A[];
+	Graph(int v){
+		V=v;
+		A= new LinkedList[v];
+		for(int i=0;i<v;i++){
+			A[i] = new LinkedList();	
+		}
+	}
+	
+	void addEdge(int u,int v){
+		A[u].add(v);
+		A[v].add(u);
+	}
+	
+	void BFS(int k){
+		 int[] count = new int[V];
+		 for(int i=0;i<V;i++){
+			count[i]=A[i].size(); 
+			
+		 }
+		 
+		for(int i=0;i<V;i++){
+			if(count[i]<k && count[i]>0 ){
+				count[i]--;
+			bfsutil(count,i,k);
+		}}
+		
+		
+		for(int i=0;i<V;i++){
+			if(count[i]>=k){
+			
+		}
+		}
+	}
+	
+	void bfsutil(int[] count, int i,int k){
+		
+		Iterator<Integer> itr = A[i].listIterator();
+		System.out.println();
+		while(itr.hasNext()){
+			int n=itr.next();
+			count[n]--;
+			
+			if(count[n]<k && count[n]>0){
+				count[n]=0;
+				bfsutil(count,n,k);
+			}
+		}
+		
+	}
+
+public static void main(String[] args){
+	Graph g1 = new Graph(9);
+	g1.addEdge(0, 1); 
+g1.addEdge(0, 2) ;
+g1.addEdge(1, 2) ;
+g1.addEdge(1, 5) ;
+g1.addEdge(2, 3) ;
+g1.addEdge(2, 4) ;
+g1.addEdge(2, 5) ;
+g1.addEdge(2, 6) ;
+g1.addEdge(3, 4) ;
+g1.addEdge(3, 6) ;
+g1.addEdge(3, 7) ;
+g1.addEdge(4, 6) ;
+g1.addEdge(4, 7) ;
+g1.addEdge(5, 6) ;
+g1.addEdge(5, 8) ;
+g1.addEdge(6, 7) ;
+g1.addEdge(6, 8); 
+	int k=3;
+	g1.BFS(k);
+	
+}
+	
+}
