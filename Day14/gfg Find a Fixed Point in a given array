@@ -1,0 +1,25 @@
+  CODE:
+  
+
+
+class Main 
+{ 
+	static int linearSearch(int nums[], int n) 
+	{ 
+	
+        for(int i=0;i<n;i++){
+            if(i==nums[i]){
+                return i;
+            }
+        }	
+        return -1;
+	} 
+	//main function 
+	public static void main(String args[]) 
+	{ 
+		int arr[] = {-10, -1, 0, 3, 10, 11, 30, 50, 100}; 
+		int n = arr.length; 
+		System.out.println("Fixed Point is "
+					+ linearSearch(arr, n)); 
+	} 
+} 
