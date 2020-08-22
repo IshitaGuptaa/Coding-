@@ -42,15 +42,14 @@ class Solution {
     public int numUniqueEmails(String[] emails) {
         HashSet<String> A = new HashSet();
         int n=emails.length;
-        int count=0;
+        
         for(int i=0;i<n;i++){
             String S = function(emails[i]);
             if(!A.contains(S)){
-                count++;
                 A.add(S);
             }
         }
-        return count;
+        return A.size();
     }
     
     
@@ -98,5 +97,5 @@ class Solution {
 SUBMISSION:
 
 Success
-Runtime: 13 ms, faster than 76.70% of Java online submissions for Unique Email Addresses.
-Memory Usage: 44.6 MB, less than 27.68% of Java online submissions for Unique Email Addresses.
+Runtime: 11 ms, faster than 79.71% of Java online submissions for Unique Email Addresses.
+Memory Usage: 44.1 MB, less than 29.42% of Java online submissions for Unique Email Addresses.
