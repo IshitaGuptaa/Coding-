@@ -1,0 +1,35 @@
+CODE:
+
+// Simple JAva program to print squares of 
+// diagonal elements. 
+import java.io.*; 
+
+class A
+{ 
+	
+	
+	// function of diagonal square 
+	static void diagonalsquare(int mat[][], int row, int column) 
+	{	System.out.println("diagonal 1: ");
+		for(int i=0;i<row;i++){
+			System.out.print(mat[i][i]*mat[i][i]+ " ,");
+		}
+		System.out.println("\ndiagonal 2 : ");
+		for(int i=0;i<row;i++){
+			System.out.print(mat[i][row-i-1]*mat[i][row-i-1]+"  ,");
+		}
+		
+		
+	} 
+	
+	// Driver code 
+	public static void main (String[] args) 
+	{ 
+		int mat[][] = { { 2, 5, 7 }, 
+						{ 3, 7, 2 }, 
+						{ 5, 6, 9 } }; 
+		diagonalsquare(mat, 3, 3); 
+		
+	} 
+} 
+
