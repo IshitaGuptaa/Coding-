@@ -1,0 +1,64 @@
+  CODE:
+  
+  
+import java.util.*;
+
+
+class TestClass {
+    public static void main(String args[] ) throws Exception {
+        Scanner scan = new Scanner(System.in);
+
+        int n=scan.nextInt();
+        int[][] A = new int[n][n];
+        int B[] = new int[n*n];
+        int count=0;
+        while(scan.hasNext()){
+            B[count]=scan.nextInt();
+            count++;
+        }
+
+        Arrays.sort(B);
+       count=0;
+        int x=0;
+        int y=0;
+       for(int count1=0;count1<((n+1)/2);count1++){
+
+           for(y=count1;y<n-count1;y++){
+               A[count1][y]=B[count];
+               count++;
+           }
+
+           for(x=count1+1;x<n-count1-1;x++){
+               A[x][n-count1-1]=B[count];
+               count++;
+            }
+
+            for(y=y-1;y>=count1;y--){
+                if(count1==n-count1-1){break;}
+                A[n-count1-1][y]=B[count];
+                count++;
+            }
+
+            for(x=x-1;x>count1;x--){
+                if(count1==n-count1-1){break;}
+                A[x][count1]=B[count];
+                count++;
+            }
+
+           
+
+       }
+
+       for(int i=0;i<n;i++){
+               for(int j=0;j<n;j++){
+                     System.out.print(A[i][j]+" ");
+               }
+               System.out.println(" ");
+           }
+
+    }
+}
+
+
+
+
