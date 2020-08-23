@@ -1,0 +1,27 @@
+CODE:
+
+
+import java.util.*;
+
+
+class TestClass {
+    public static void main(String args[] ) throws Exception {
+        Scanner scan = new Scanner(System.in);
+
+        int n=scan.nextInt();
+        //int[][] A = new int[n][n];
+        int B[] = new int[n*n];
+        int count=0;
+        while(scan.hasNext()){
+            B[count]=scan.nextInt();
+            count++;
+        }
+
+        Arrays.sort(B);
+        
+        for(count=0;count<n*n;count++){
+            if(count%(n)==0) {System.out.println(" ");}
+            System.out.print(B[count]+" ");       }
+
+    }
+}
