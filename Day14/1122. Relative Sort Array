@@ -1,0 +1,52 @@
+QUESTION:1122. Relative Sort Array
+Given two arrays arr1 and arr2, the elements of arr2 are distinct, and all elements in arr2 are also in arr1.
+
+Sort the elements of arr1 such that the relative ordering of items in arr1 are the same as in arr2.  Elements that don't appear in arr2 should be placed at the end of arr1 in ascending order.
+
+
+
+CODE:
+
+class Solution {
+    public int[] relativeSortArray(int[] arr1, int[] arr2) {
+        int pointer=0;
+        int left=0;
+        int n=arr2.length;
+        int n1=arr1.length;
+        
+        
+        while(pointer<n){
+            for(int right=left;right<n1;right++){
+                if(arr1[right]==arr2[pointer]){
+                    int temp=arr1[left];
+                    arr1[left]=arr1[right];
+                    arr1[right]=temp;
+                    left++;
+                }
+            }
+            pointer++;
+        }
+       
+        int[] A = new int[n1-left];
+        for(int i=left;i<n1;i++){
+            A[i-left]=arr1[i];
+        }
+        
+        Arrays.sort(A);
+        
+        for(int i=left;i<n1;i++){
+            arr1[i]=A[i-left];
+        }
+        
+
+        return arr1;
+    }
+}
+
+
+
+SUBMISSION:
+
+Success
+Runtime: 4 ms, faster than 44.92% of Java online submissions for Relative Sort Array.
+Memory Usage: 38.2 MB, less than 90.83% of Java online submissions for Relative Sort Array.
