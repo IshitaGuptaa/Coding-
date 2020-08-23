@@ -1,0 +1,76 @@
+CODE:
+
+
+public class Solution {
+
+    // Complete the matrixRotation function below.
+    static void matrixRotation(List<List<Integer>> matrix, int r) {
+
+int row=matrix.size();
+int col=matrix.get(0).size();
+int x=0,y=0;
+int n=Math.min(col,row);
+
+/*
+int mod=1;
+for(int count=0;count<((n+1)/2);count++){
+int a=((row +col -(4*count)-2)*2);
+if(mod%a!=0){
+    mod*=a;
+}
+}
+
+
+r=r%mod;
+//System.out.println("r: "+r);
+
+*/
+while(r>0){
+    
+    for(int count=0;count<((n+1)/2);count++){
+        
+        int old=matrix.get(count).get(count);
+        for(x=count+1;x<row-count;x++){
+            int temp=matrix.get(x).get(count);
+            matrix.get(x).set(count,old);
+            old=temp;
+            //System.out.println(matrix.get(count).get(y));
+        }
+
+        for(y=count+1;y<col-count-1;y++){
+            int temp=matrix.get(row-count-1).get(y);
+            matrix.get(row-count-1).set(y,old);
+            old=temp;
+            //System.out.println(matrix.get(x).get(col-count-1));
+        }
+
+        for(x=x-1;x>=count;x--){
+            if(count==col-count-1){break;}
+            int temp=matrix.get(x).get(col-count-1);
+            matrix.get(x).set(col-count-1,old);
+            old=temp;
+            //System.out.println(matrix.get(row-count-1).get(y));
+        }
+
+        for(y=y-1;y>=count;y--){
+            if(count==row-count-1){break;}
+            int temp=matrix.get(count).get(y);
+            matrix.get(count).set(y,old);
+            old=temp;
+            //System.out.println(matrix.get(x).get(count));
+        }
+
+    }
+
+    r--;
+}
+
+
+for(int i=0;i<row;i++){
+    for(int j=0;j<col;j++){
+System.out.print(matrix.get(i).get(j)+" ");
+    }
+    System.out.println("");
+}
+    
+    }
