@@ -1,0 +1,71 @@
+QUESTION: 33. Search in Rotated Sorted Array
+
+Given an integer array nums sorted in ascending order, and an integer target.
+
+Suppose that nums is rotated at some pivot unknown to you beforehand (i.e., [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]).
+
+You should search for target in nums and if you found return its index, otherwise return -1.
+
+ 
+
+Example 1:
+
+Input: nums = [4,5,6,7,0,1,2], target = 0
+Output: 4
+Example 2:
+
+Input: nums = [4,5,6,7,0,1,2], target = 3
+Output: -1
+Example 3:
+
+Input: nums = [1], target = 0
+Output: -1
+
+
+
+
+
+CODE:
+
+class Solution {
+    public int search(int[] nums, int target) {
+        int n=nums.length;
+        int count=0;
+        for(int i=1;i<n;i++){
+            if(nums[i]<nums[i-1]){
+                count=i;
+                break;
+            }
+        }
+        
+        if(count>0 && target>nums[count-1] || target<nums[count]){
+         
+            return -1;}
+
+        if(target>=nums[0]){
+            for(int i=0;i<count;i++){
+                if(nums[i]==target){
+                    return i;
+                }
+
+        }}
+        
+        if(target>=nums[count]){
+            for(int i=count;i<n;i++){
+                if(nums[i]==target){
+                    return i;
+                }   
+            }
+           
+        }
+        return -1;
+    }
+}
+
+
+
+SUBMISSION:
+
+Success
+Runtime: 0 ms, faster than 100.00% of Java online submissions for Search in Rotated Sorted Array.
+Memory Usage: 39.5 MB, less than 43.78% of Java online submissions for Search in Rotated Sorted Array.
