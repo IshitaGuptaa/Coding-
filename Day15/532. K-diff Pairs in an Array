@@ -57,3 +57,29 @@ SUBMISSON:
 Success
 Runtime: 626 ms, faster than 7.09% of Java online submissions for K-diff Pairs in an Array.
 Memory Usage: 39.9 MB, less than 84.21% of Java online submissions for K-diff Pairs in an Array.
+
+
+
+CODE:
+
+class Solution {
+    public int findPairs(int[] nums, int k) {
+        
+        int count=0;
+        int n=nums.length;
+        Arrays.sort(nums);
+        for(int right=0;right<n;right++){
+            if(Arrays.binarySearch(nums,right+1,n,nums[right]+k)>=0){
+                count++;
+            }
+             while(right<n-1 && nums[right]==nums[right+1]){right++;}
+        }
+        return count;
+    }
+}
+
+
+SUBMISSION: 
+Success
+Runtime: 7 ms, faster than 88.20% of Java online submissions for K-diff Pairs in an Array.
+Memory Usage: 40 MB, less than 75.11% of Java online submissions for K-diff Pairs in an Array.
