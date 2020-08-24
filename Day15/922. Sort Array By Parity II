@@ -54,3 +54,55 @@ SUBMISSION:
 Success
 Runtime: 731 ms, faster than 5.61% of Java online submissions for Sort Array By Parity II.
 Memory Usage: 52.2 MB, less than 28.17% of Java online submissions for Sort Array By Parity II.
+
+
+
+---orrr---
+CODE:
+
+class Solution {
+    public int pivotIndex(int[] nums) {
+        
+      
+        int n=nums.length;
+      if(n<2) return  -1; 
+        
+        int mid=0;
+        
+         int sumleft=0;
+         int sumright=0;
+        
+        
+        for(int right=mid+1;right<n;right++){
+            sumright+=nums[right];
+        }
+        
+        while(mid>=0 && mid<n){
+           
+            if(sumleft==sumright){return mid;}
+            if(mid<n-1){
+            sumleft+=nums[mid];
+            sumright-=nums[mid+1];}
+            
+            mid++;
+           
+          
+           
+            
+        }
+        
+        
+        
+        return -1;
+    }
+}
+
+
+
+
+
+SUBMISSION:
+
+Success
+Runtime: 1 ms, faster than 100.00% of Java online submissions for Find Pivot Index.
+Memory Usage: 40.4 MB, less than 50.52% of Java online submissions for Find Pivot Index.
