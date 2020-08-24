@@ -1,0 +1,61 @@
+QUESTION: 233. Number of Digit One
+Given an integer n, count the total number of digit 1 appearing in all non-negative integers less than or equal to n.
+
+Example:
+
+Input: 13
+Output: 6 
+Explanation: Digit 1 occurred in the following numbers: 1, 10, 11, 12, 13.
+
+
+CODE:
+class Solution {
+    public int countDigitOne(int n1) {
+        int count=0;
+        for(int i=1;i<n1+1;i++){
+            int n=i;
+            while(n>0){
+                if(n%10==1){count++;}
+                n/=10;
+            }
+        }
+     return count;   
+    }
+}
+
+SUBMISSION:
+Time Limit Exceeded
+
+
+---ORR---
+
+CODE:
+class Solution {
+    public int countDigitOne(int n1) {
+        if(n1<=0) return 0;
+        int a=0;
+        int count=1;
+        if(n1<10) return 1;
+        for(int i=10;i<n1+1;i++){
+            int n=i;
+            if(n%10==0){
+                i=i+9; 
+            }   
+            a=0;
+            while(n>0){
+                if(n%10==1){a++;}
+                n/=10;
+            }
+            count+=(a*10)+1;
+        }
+     if(n1%10==0) return count-a*(9-n1%10)-1;
+     return count-a*(9-n1%10);   
+    }
+}
+SUBMISSION:
+Time Limit Exceeded 
+
+
+
+--ORR----
+
