@@ -44,3 +44,56 @@ SUBMISSION:
 Success
 Runtime: 0 ms, faster than 100.00% of Java online submissions for Sort Colors.
 Memory Usage: 38.4 MB, less than 43.90% of Java online submissions for Sort Colors.
+
+
+
+    CODE:
+    
+    class Solution {
+    public void sortColors(int[] a) {
+        int n=a.length;
+        int low=0;
+        int high=n-1;
+        int mid=0;
+        
+        while(high>=mid){
+            switch(a[mid]){
+                case 0:
+                    if(a[mid]!=a[low]){
+                        a[mid]=a[low];
+                        a[low]=0;
+                    }
+                    low++;
+                    mid++;
+                    break;
+                case 1:
+                    mid++;
+                    break;
+                case 2:
+                    if(a[mid]==a[high]){high--;}
+                    else{
+                        a[mid]=a[high];
+                        a[high--]=2;
+                        //mid++;
+                    }
+                    break;
+                    
+            }
+        }
+        
+        
+    }
+    
+    
+    SUBMISSION:
+    Success
+Runtime: 0 ms, faster than 100.00% of Java online submissions for Sort Colors.
+Memory Usage: 37.8 MB, less than 89.58% of Java online submissions for Sort Colors.
+}
+
+
+SUBMISSION:
+Success
+Details 
+Runtime: 0 ms, faster than 100.00% of Java online submissions for Sort Colors.
+Memory Usage: 37.8 MB, less than 89.58% of Java online submissions for Sort Colors.
