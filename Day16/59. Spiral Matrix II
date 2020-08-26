@@ -1,0 +1,61 @@
+QUESTIONS:59. Spiral Matrix II
+Given a positive integer n, generate a square matrix filled with elements from 1 to n2 in spiral order.
+
+Example:
+
+Input: 3
+Output:
+[
+ [ 1, 2, 3 ],
+ [ 8, 9, 4 ],
+ [ 7, 6, 5 ]
+]
+
+
+
+
+
+CODE:
+
+class Solution {
+    public int[][] generateMatrix(int n) {
+     
+        
+        int[][] A = new int[n][n];
+        
+        int x=0;
+        int y=0;
+       
+        int element=1;
+        for(int count=0;count<(n+1)/2;count++){
+            
+            for(y=count;y<n-count;y++){
+                A[count][y]=element++;
+                
+            }
+            
+            for(x=count+1;x<n-count-1;x++){
+                A[x][n-count-1]=element++;
+            }
+            
+            for(y=y-1;y>=count;y--){
+                if(count==n-count-1){break;}
+                A[n-count-1][y]=element++;
+            }
+            
+            for(x=x-1;x>count;x--){
+                if(count==n-count-1){break;}
+                A[x][count]=element++;
+            }
+            
+        }
+        
+        return A;
+    }
+}
+
+
+SUBMISSIONS:
+Success
+Runtime: 0 ms, faster than 100.00% of Java online submissions for Spiral Matrix II.
+Memory Usage: 37.2 MB, less than 84.29% of Java online submissions for Spiral Matrix II
