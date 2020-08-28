@@ -76,3 +76,51 @@ SUBMISSION:
 Success
 Runtime: 1 ms, faster than 98.45% of Java online submissions for Lucky Numbers in a Matrix.
 Memory Usage: 40.5 MB, less than 41.99% of Java online submissions for Lucky Numbers in a Matrix.
+
+
+
+
+--OR---
+
+CODE:
+class Solution {
+    public List<Integer> luckyNumbers (int[][] matrix) {
+        int row=matrix.length;
+        int col=matrix[0].length;
+       
+        List<Integer> res = new ArrayList();
+        
+        if(row==1 && col==1){res.add(matrix[0][0]); return res;}
+        
+        int max[] = new int[col];
+        int min[] = new int[row];
+        Arrays.fill(min,Integer.MAX_VALUE);
+                
+            for(int i=0;i<row;i++){
+                for(int j=0;j<col;j++){
+                   min[i]=Math.min(min[i],matrix[i][j]);
+                   max[j]=Math.max(matrix[i][j],max[j]);}
+                
+            }
+        
+        for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                if(min[i]==max[j]){
+                    res.add(min[i]);
+                }
+            }
+        }
+        
+        
+        
+        
+     return res;   
+    }
+}
+
+
+
+SUBMISSION:
+Success
+Runtime: 2 ms, faster than 84.43% of Java online submissions for Lucky Numbers in a Matrix.
+Memory Usage: 40.4 MB, less than 43.54% of Java online submissions for Lucky Numbers in a Matrix.
