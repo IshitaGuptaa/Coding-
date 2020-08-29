@@ -1,0 +1,69 @@
+QUESTION : 228. Summary Ranges
+Given a sorted integer array without duplicates, return the summary of its ranges.
+
+Example 1:
+
+Input:  [0,1,2,4,5,7]
+Output: ["0->2","4->5","7"]
+Explanation: 0,1,2 form a continuous range; 4,5 form a continuous range.
+Example 2:
+
+Input:  [0,2,3,4,6,8,9]
+Output: ["0","2->4","6","8->9"]
+Explanation: 2,3,4 form a continuous range; 8,9 form a continuous range.
+
+
+
+
+CODE:
+
+class Solution {
+    public List<String> summaryRanges(int[] nums) {
+        int n=nums.length;
+        List<String> res = new LinkedList();
+        if(n==0) return res;
+        if(n==1) {res.add(String.valueOf(nums[0])); return res;}
+        int left=0;
+        
+        int right=0;
+        for(right=0;right<n-1;right++){
+            if(nums[right]+1==nums[right+1]){
+                continue;
+            }
+            else{
+                
+                if(left==right){
+                    res.add(String.valueOf(nums[left]));
+                }
+                else{
+                String s="";
+                s+=String.valueOf(nums[left]);
+                s+="->";
+                s+=String.valueOf(nums[right]);
+                res.add(s);
+                }
+                left=right+1;
+            }
+        }
+        
+        if(nums[n-1]!=nums[n-2]+1){
+            res.add(String.valueOf(nums[n-1]));
+        }
+        else{
+            String s="";
+                s+=String.valueOf(nums[left]);
+                s+="->";
+                s+=String.valueOf(nums[right]);
+                res.add(s);
+        }
+        
+        return res;
+    }
+}
+
+
+SUBMISSION:
+
+Success
+Runtime: 1 ms, faster than 90.19% of Java online submissions for Summary Ranges.
+Memory Usage: 37.1 MB, less than 99.87% of Java online submissions for Summary Ranges
