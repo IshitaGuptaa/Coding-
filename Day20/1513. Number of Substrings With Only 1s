@@ -75,3 +75,41 @@ SUBMISSION:
 Success
 Runtime: 6 ms, faster than 85.52% of Java online submissions for Number of Substrings With Only 1s.
 Memory Usage: 40 MB, less than 77.01% of Java online submissions for Number of Substrings With Only 1s.
+
+
+
+
+
+
+
+
+--or---
+
+
+CODE:
+
+class Solution {
+    public int numSub(String s) {
+        
+        int temp=0;
+       int count=0;
+        
+        for(char c:s.toCharArray()){
+            if(c=='0'){
+                temp=0;
+            }
+            else{
+                count=(int)((count+(++temp))%(1e9+7));
+            }
+        }
+        
+        return count;
+    }
+}
+
+
+SUBMISSION:
+
+Success
+Runtime: 6 ms, faster than 85.52% of Java online submissions for Number of Substrings With Only 1s.
+Memory Usage: 40.1 MB, less than 76.26% of Java online submissions for Number of Substrings With Only 1s.
