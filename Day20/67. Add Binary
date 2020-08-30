@@ -1,0 +1,65 @@
+QUESTION: 67. Add Binary
+Given two binary strings, return their sum (also a binary string).
+
+The input strings are both non-empty and contains only characters 1 or 0.
+
+Example 1:
+
+Input: a = "11", b = "1"
+Output: "100"
+Example 2:
+
+Input: a = "1010", b = "1011"
+Output: "10101"
+ 
+
+Constraints:
+
+Each string consists only of '0' or '1' characters.
+1 <= a.length, b.length <= 10^4
+Each string is either "0" or doesn't contain any leading zero.
+
+
+
+
+
+CODE:
+
+
+class Solution {
+    public String addBinary(String a, String b) {
+        char A[] = a.toCharArray();
+        char B[] = b.toCharArray();
+        int n1=A.length;
+        int n2=B.length;
+        StringBuilder res = new StringBuilder();
+        int carry=0;
+        
+        int index1=n1-1;
+        int index2=n2-1;
+        int sum=0;
+        while(index1>=0 || index2>=0){
+            
+            sum=carry;
+            if(index1>=0){sum+=(A[index1]-'0');  index1--;}
+            if(index2>=0){sum+=(B[index2]-'0'); index2--;}
+            
+            res.append(sum%2);
+            carry=sum/2;
+            
+            //System.out.println(sum);
+            
+        }
+        if(carry>0){res.append(carry);}
+        return res.reverse().toString();
+        
+    }
+}
+
+
+
+SUBMISSION:
+
+Success
+Runtime: 1 ms, faster than 100.00% of Java online submissions for Add Binary.
+Memory Usage: 39.6 MB, less than 51.16% of Java online submissions for Add Binary.
