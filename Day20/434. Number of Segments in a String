@@ -1,0 +1,67 @@
+QUESTION: 434. Number of Segments in a String
+Count the number of segments in a string, where a segment is defined to be a contiguous sequence of non-space characters.
+
+Please note that the string does not contain any non-printable characters.
+
+Example:
+
+Input: "Hello, my name is John"
+Output: 5
+
+
+
+
+
+CODE:
+
+class Solution {
+    public int countSegments(String s) {
+        
+        if(s.trim().equals("")) return 0;
+        return s.trim().split(" +").length;
+     }
+}
+
+
+
+SUBMISSION:
+
+Success
+Runtime: 3 ms, faster than 7.86% of Java online submissions for Number of Segments in a String.
+Memory Usage: 39.4 MB, less than 5.06% of Java online submissions for Number of Segments in a String.
+
+
+
+
+---ORR---
+
+
+CODE:
+class Solution {
+    public int countSegments(String s) {
+        int count=0;
+        char[] A = s.toCharArray();
+        int n=A.length;
+        if(n==0) return 0;
+        
+        int i=0;
+        for(i=0;i<n-1;i++){
+            if(A[i]==' ' && A[i+1]!=' '){
+                count++;
+            }
+            
+        }
+        
+        if(A[0]!=' ')
+        {count++;}
+        
+
+        return count;
+        
+    }
+}
+
+SUBMISSION:
+Success
+Runtime: 0 ms, faster than 100.00% of Java online submissions for Number of Segments in a String.
+Memory Usage: 39.2 MB, less than 10.86% of Java online submissions for Number of Segments in a String.
