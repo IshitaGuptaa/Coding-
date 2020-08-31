@@ -73,3 +73,40 @@ SUBMISSION:
 Success
 Runtime: 9 ms, faster than 61.75% of Java online submissions for Prime Number of Set Bits in Binary Representation.
 Memory Usage: 36.6 MB, less than 61.63% of Java online submissions for Prime Number of Set Bits in Binary Representation.
+
+
+
+
+
+CODE:
+
+
+class Solution {
+    public int countPrimeSetBits(int L, int R) {
+        int count=0;
+        for(int i=L;i<R+1;i++){
+            if(isPrime(Integer.bitCount(i))){
+                count++;
+            }
+        }
+        return count;   
+    }
+    
+    
+    public boolean isPrime(int x){
+       if( x == 2 || x == 3 || x == 5 || x == 7 ||x == 11 || x == 13 || x == 17 || x == 19){
+           return true;
+       }
+        return false;
+    }
+}
+
+
+
+
+SUBMISSION:
+
+Success
+
+Runtime: 3 ms, faster than 96.59% of Java online submissions for Prime Number of Set Bits in Binary Representation.
+Memory Usage: 36.2 MB, less than 89.65% of Java online submissions for Prime Number of Set Bits in Binary Representation.
