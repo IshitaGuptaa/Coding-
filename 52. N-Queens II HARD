@@ -1,0 +1,76 @@
+QUESTION: 52. N-Queens II
+The n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no two queens attack each other.
+Given an integer n, return the number of distinct solutions to the n-queens puzzle.
+
+Example:
+
+Input: 4
+Output: 2
+Explanation: There are two distinct solutions to the 4-queens puzzle as shown below.
+[
+ [".Q..",  // Solution 1
+  "...Q",
+  "Q...",
+  "..Q."],
+
+ ["..Q.",  // Solution 2
+  "Q...",
+  "...Q",
+  ".Q.."]
+]
+
+
+
+
+
+
+CODE:
+
+
+class Solution {
+    public int totalNQueens(int n) {
+        if(n==0) return 0;
+        if(n==1) return 1;
+        int[][] A = new int[n][n];
+        return func(A,0,0);
+    }
+    
+    
+    public int func(int[][] A,int col,int count){
+        if(col==A[0].length){count++;return count;}
+        for(int i=0;i<A.length;i++){
+            if(isSafe(A,i,col)){
+                A[i][col]=1;
+                count=func(A,col+1,count);
+                A[i][col]=0;
+            }
+        }
+       return count;
+    }
+    
+    
+    public boolean isSafe(int[][] board , int row,int col){
+        int i, j; 
+
+        for (i = 0; i < col; i++) 
+            if (board[row][i] == 1) 
+                return false; 
+        for (i = row, j = col; i >= 0 && j >= 0; i--, j--) 
+            if (board[i][j] == 1) 
+                return false; 
+        for (i = row, j = col; j >= 0 && i < board.length; i++, j--) 
+            if (board[i][j] == 1) 
+                return false; 
+  
+        return true; 
+        }
+
+}
+
+
+
+
+SUBMISSION:
+Success
+Runtime: 1 ms, faster than 87.64% of Java online submissions for N-Queens II.
+Memory Usage: 36.4 MB, less than 62.18% of Java online submissions for N-Queens II.
