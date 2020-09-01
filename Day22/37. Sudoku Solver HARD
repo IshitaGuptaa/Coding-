@@ -1,0 +1,116 @@
+QUESTION:37. Sudoku Solver
+Write a program to solve a Sudoku puzzle by filling the empty cells.
+
+A sudoku solution must satisfy all of the following rules:
+
+Each of the digits 1-9 must occur exactly once in each row.
+Each of the digits 1-9 must occur exactly once in each column.
+Each of the the digits 1-9 must occur exactly once in each of the 9 3x3 sub-boxes of the grid.
+Empty cells are indicated by the character '.'.
+
+
+A sudoku puzzle...
+
+
+...and its solution numbers marked in red.
+
+Note:
+
+The given board contain only digits 1-9 and the character '.'.
+You may assume that the given Sudoku puzzle will have a single unique solution.
+The given board size is always 9x9.
+
+
+
+
+
+
+
+
+CODE:
+
+class Solution {
+    public void solveSudoku(char[][] A) {
+        func(A);   
+    }
+    
+    
+    public boolean func(char[][] A){
+            
+        int row=-1;
+        int col=-1;
+
+        for(int i=0;i<A.length;i++){
+            boolean flag=true;
+            for(int j=0;j<A[0].length;j++){
+                if(A[i][j]=='.'){
+                col=j;
+                row=i;
+                flag=false;  
+                break;}
+            }
+            if(!flag){break;}
+        }
+        
+        
+        if(row==-1 && col==-1){
+        return true;
+        }
+        
+        if(row!=-1 && col!=-1){
+        for(int i=1;i<A.length+1;i++){      
+            
+            if(isSafe(A,row,col,i)){
+                A[row][col]=(char)(i+'0');
+                if(func(A)){
+                    return true;
+                }
+                A[row][col]='.';
+            }
+        }}
+        
+        
+      
+        
+        return false;
+    }
+    
+    
+    public boolean isSafe(char[][] A, int row, int col, int num){
+        for(int i=0;i<A.length;i++){
+            if(A[i][col]==(char)(num+'0')){
+                return false;
+            }
+        }
+        for(int i=0;i<A.length;i++){
+            if(A[row][i]==(char)(num+'0')){
+                return false;
+            }
+        }
+
+        int sqrt = (int)Math.sqrt(A.length); 
+        int boxRowStart = row - row % sqrt; 
+        int boxColStart = col - col % sqrt; 
+  
+        for (int r = boxRowStart; r < boxRowStart + sqrt; r++) { 
+            for (int d = boxColStart;d < boxColStart + sqrt; d++) { 
+                if (A[r][d] == (char)(num+'0')) { 
+                    return false; 
+                } 
+            } 
+        }
+         
+        
+        
+            return true;
+    }
+}
+
+
+
+
+SUBMISSION:
+
+Success
+Runtime: 9 ms, faster than 71.91% of Java online submissions for Sudoku Solver.
+Memory Usage: 37 MB, less than 71.04% of Java online submissions for Sudoku Solver.
