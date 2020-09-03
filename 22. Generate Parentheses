@@ -1,0 +1,44 @@
+QUESTION: 22. Generate Parentheses
+Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+
+For example, given n = 3, a solution set is:
+
+[
+  "((()))",
+  "(()())",
+  "(())()",
+  "()(())",
+  "()()()"
+]
+
+
+
+
+
+
+CODE:
+class Solution {
+    public List<String> generateParenthesis(int n) {
+        List<String> res = new ArrayList();
+        backtrack(res,0,0,"",n);
+        return res;
+    }
+    
+    
+    public void backtrack( List<String> res, int open, int close, String s , int n){
+        
+       if(s.length()==2*n){
+           res.add(s);
+           return;
+       }
+        if(open<n){backtrack(res,open+1,close,s+"(",n);}
+        if(close<open){backtrack(res,open,close+1,s+")",n);}
+    }
+}
+
+
+SUBMISSION:
+
+Success
+Runtime: 1 ms, faster than 89.80% of Java online submissions for Generate Parentheses.
+Memory Usage: 39.6 MB, less than 73.74% of Java online submissions for Generate Parentheses.
