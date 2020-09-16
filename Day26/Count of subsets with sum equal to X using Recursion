@@ -1,0 +1,35 @@
+CODE:
+
+import java.util.*; 
+
+class Main 
+{ 
+static int subsetSum(int arr[], int i, 
+					int sum, int count) 
+{ 
+	if (i == -1) 
+	{ 
+		if (sum == 0) 
+		{ 
+			count++; 
+		} 
+		return count; 
+	} 
+
+	count = subsetSum(arr, i - 1, sum - arr[i], count); 
+	count = subsetSum(arr, i - 1, sum, count); 
+	return count; 
+} 
+
+// Driver code 
+public static void main(String[] args) 
+{ 
+	int arr[] = { 1, 2, 3, 4, 5 }; 
+	int sum = 10; 
+	int n = arr.length; 
+
+	System.out.print(subsetSum(arr, n-1, sum, 0)); 
+} 
+} 
+
+
