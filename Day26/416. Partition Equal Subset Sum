@@ -1,0 +1,30 @@
+CODE:
+
+class Solution {
+    Map<Integer, Boolean> map;
+    public boolean canPartition(int[] nums) {
+        int total = 0;
+        map = new HashMap();
+        for (int num: nums) {
+            total += num;
+        }
+        if (total % 2 != 0) return false;
+        return traverse(nums, total / 2, nums.length-1);
+    }
+    
+    public boolean traverse(int [] nums, int sum, int index) {
+        if(sum==0) return true;
+        if(sum<0|| index==0) return false;
+        if(map.containsKey(sum)){return map.get(sum);}
+        boolean res = traverse(nums, sum-nums[index], index-1)||traverse(nums, sum, index-1);
+        map.put(sum,res);
+        return res;
+    }
+}
+
+
+SUBMISSION:
+
+Success
+Runtime: 1 ms, faster than 97.39% of Java online submissions for Partition Equal Subset Sum.
+Memory Usage: 38.7 MB, less than 77.94% of Java online submissions for Partition Equal Subset Sum.
