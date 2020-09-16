@@ -1,0 +1,66 @@
+CODE:
+
+// A Java program for Prim's Minimum Spanning Tree (MST) algorithm.
+// The program is for adjacency matrix representation of the graph
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Main {
+	private static final int N = 5;
+
+	void primMST(int graph[][])
+	{
+	    boolean[] visited = new boolean[N];
+	    int[] parent = new int[N];
+	    parent[0]=-1;
+	    int[] weight = new int[N];
+	    Arrays.fill(weight,Integer.MAX_VALUE);
+	    for(int i=0;i<N-1;i++){
+	        int index=0;
+	        int min=Integer.MAX_VALUE;
+	        weight[0]=0;
+	        for(int j=0;j<N;j++){
+	            if(!visited[j] && weight[j]<=min){
+	                min=weight[j];
+	                index=j;
+	            }
+	        }
+	        
+	        visited[index]=true;
+	        for(int j=0;j<N;j++){
+	            if(!visited[j] && graph[index][j]!=0 && graph[index][j]<weight[j]){
+	                parent[j]=index;
+	                weight[j]=graph[index][j];
+	            }
+	        }
+	        
+	        
+	    }
+	    
+	    printfunc(weight,parent);
+	    
+	}
+	
+	public void printfunc(int[] weight, int[] parent){
+	    for(int i=1;i<N;i++){
+	        System.out.println(parent[i]+"->"+i+" : "+weight[i]);
+	    }
+	}
+
+	public static void main(String[] args)
+	{
+
+		Main t = new Main();
+		int graph[][] = new int[][] { { 0, 2, 0, 6, 0 },
+									{ 2, 0, 3, 8, 5 },
+									{ 0, 3, 0, 0, 7 },
+									{ 6, 8, 0, 0, 9 },
+									{ 0, 5, 7, 9, 0 } };
+
+		t.primMST(graph);
+	}
+}
+
+
