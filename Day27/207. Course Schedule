@@ -90,3 +90,57 @@ SUBMISSION:
 Success
 Runtime: 3 ms, faster than 91.52% of Java online submissions for Course Schedule.
 Memory Usage: 40.2 MB, less than 60.23% of Java online submissions for Course Schedule
+
+
+
+--orr---
+
+class Solution {
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+     int row = prerequisites.length;
+     
+         ArrayList<Integer>[] A = new ArrayList[numCourses];
+        for(int i=0;i<numCourses;i++){
+            A[i]=new ArrayList<Integer>();
+        }
+        for(int i=0;i<row;i++){
+            A[prerequisites[i][1]].add(prerequisites[i][0]);
+        }
+        int[] indegree = new int[numCourses];
+        for(int i=0;i<numCourses;i++){
+            for(int node:A[i]){
+                indegree[node]++;
+            }
+        }
+        int count=0;
+        LinkedList<Integer> queue = new LinkedList();
+        
+        for(int i=0;i<numCourses;i++){
+            if(indegree[i]==0){
+                queue.add(i);
+                count++;
+            }
+        }
+              
+        while(!queue.isEmpty()){
+            int a = queue.poll();
+            for(int node:A[a]){
+                if(--indegree[node]==0){
+                    queue.add(node);
+                    count++;
+                   
+                }
+            }
+        }
+       if(count==numCourses){
+            return true;
+        }
+        return false;
+    }
+}
+
+
+submission:
+Success
+Runtime: 3 ms, faster than 91.52% of Java online submissions for Course Schedule.
+Memory Usage: 40 MB, less than 76.76% of Java online submissions for Course Schedule.
